@@ -10,6 +10,13 @@ def setup_request_logging(app):
     
     @app.before_request
     def before_request():
+        # --- FIX 1: IGNORE OPTIONS REQUESTS ---
+        # OPTIONS requests (Preflight) have no body and no useful data to log.
+        # Processing them often causes crashes if other logic expects data/tokens.
+        if request.method == 'OPTIONS':
+            return
+        # --------------------------------------
+
         """Log request start and store start time"""
         g.start_time = time.time()
         logger.info(f"Request started: {request.method} {request.url}")
