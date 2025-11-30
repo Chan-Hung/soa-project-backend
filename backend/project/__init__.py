@@ -44,22 +44,22 @@ def create_app():
     # Users
     from project.api.users import users_blueprint
 
-    app.register_blueprint(users_blueprint, url_prefix="/api/users")
+    app.register_blueprint(users_blueprint, url_prefix="/users")
     logger.info("Users blueprint registered")
 
     from project.api.auth import auth_blueprint
 
-    app.register_blueprint(auth_blueprint, url_prefix="/api/auth")
+    app.register_blueprint(auth_blueprint, url_prefix="/auth")
     logger.info("Auth blueprint registered")
 
     from project.api.exercises import exercises_blueprint
 
-    app.register_blueprint(exercises_blueprint, url_prefix="/api/exercises")
+    app.register_blueprint(exercises_blueprint, url_prefix="/exercises")
     logger.info("Exercises blueprint registered")
 
     from project.api.scores import scores_blueprint
 
-    app.register_blueprint(scores_blueprint, url_prefix="/api/scores")
+    app.register_blueprint(scores_blueprint, url_prefix="/scores")
     logger.info("Scores blueprint registered")
 
     # Setup request logging middleware
